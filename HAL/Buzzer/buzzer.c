@@ -4,7 +4,7 @@
  *  Created on: Oct 27, 2022
  *      Author: hp
  */
-#include "gpio.h"
+#include "DIO_INTERFACE.h"
 #include "buzzer.h"
 /*
  * Setup the direction for the buzzer pin as output pin through the
