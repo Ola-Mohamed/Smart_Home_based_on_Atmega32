@@ -5,11 +5,27 @@
  *      Author: 20128
  */
 
-
+#include "MemMap.h"
+#include "DIO_TYPES.h"
+#include "STD_TYPES.h"
+#include "DIO_CONFIG.h"
+#include "DIO_PRIVATE.h"
 #include "DIO_INTERFACE.h"
-#include"MemMap.h"
+#include "Utils.h"
 
+void MCAL_DIO_INIT(){
 
+	Dio_ConfigType configType;
+	
+	for ( configType.PORT =PORTA ; configType.PORT<TOTALPORTS_ID; configType.PORT++)
+	{
+		for ( configType.PIN =PIN0_ID ; configType.PIN<TOTALPINS_ID; configType.PIN++)
+		{
+			MCAL_DIO_INIT_PINS( &configType , pin_StatusArr[configType.PORT][configType.PIN]);
+		}
+	
+	}
+}
 
 static void MCAL_DIO_INIT_PINS(Dio_ConfigType * configType , DIO_PIN_DIRECTION_TYPE pinStatus){
 	
