@@ -39,6 +39,7 @@ typedef enum {
   PORTB_ID, // Port B.
   PORTC_ID, // Port C.
   PORTD_ID, // Port D.
+  TOTALPORTS_ID,
 } DIO_PORT_ID;
 
 // Type definition for a DIO pin ID.
@@ -51,6 +52,7 @@ typedef enum {
   PIN5_ID,
   PIN6_ID,
   PIN7_ID,
+  TOTALPINS_ID,
 } DIO_PIN_ID;
 
 // Structure to represent a DIO configuration.
