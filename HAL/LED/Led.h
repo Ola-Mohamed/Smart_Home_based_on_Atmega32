@@ -34,15 +34,15 @@ typedef struct {
  *              2. Set the PIN direction which the led is connected as OUTPUT pin
  *		        3. Initialize the led ON/OFF according to the initial value
  */
-void LED_init(LED_config_t *Led_config);
+void HAL_LED_init(LED_config_t *Led_config);
 
 /* Description: Set the LED state to ON */
-void LED_setOn(void);
+void HAL_LED_setOn(void);
 
 /* Description: Set the LED state to OFF */
-void LED_setOff(void);
+void HAL_LED_setOff(void);
 
 /*Description: Toggle the LED state */
-void LED_toggle(void);
+void HAL_LED_toggle(void);
 
 #endif /* LED_H */
