@@ -676,17 +676,58 @@ DIO_LEVEL_TYPE MCAL_DIO_Std_READ_PIN_DIRECTION(DIO_PORT_ID PortId,DIO_PIN_ID Pin
 }
 
 
-DIO_LEVEL_TYPE MCAL_DIO_Std_FLIP_PIN_DIRECTION(DIO_PORT_ID *PortId){
+STD_TYPE MCAL_DIO_Std_FLIP_PORT_DIRECTION(uint8 PortId){
 
+	STD_TYPE ERROR= E_OK;
+		if (PortId <= 3)
+			{
+				switch (PortId)
+				{
+				case PORTA_ID :  PORTA = ~PORTA;
+				break ;
+				case PORTB_ID : PORTB = ~PORTB;
+				break ;
+				case PORTC_ID : PORTB = ~PORTB;
+				break ;
+				case PORTD_ID : PORTB = ~PORTB;
+				break ;
+				}
+
+			}
+		else
+			{
+				/* in case of error in the Pin ID or PORT ID */
+				ERROR = E_NOT_OK ;
+			}
 
 
 }
+STD_TYPE MCAL_DIO_Std_FLIP_PIN_DIRECTION(uint8 PortId, uint8 PIN){
 
-DIO_LEVEL_TYPE MCAL_DIO_Std_FLIP_PIN_DIRECTION(DIO_PIN_ID *PinId){
+	STD_TYPE ERROR= E_OK;
+	if (PIN <= 7)
+		{
+			switch (PortId)
+			{
+			case PORTA_ID : FLIP_BIT(PORTA,PIN);
+			break ;
+			case PORTB_ID : FLIP_BIT(PORTB,PIN);
+			break ;
+			case PORTC_ID : FLIP_BIT(PORTC,PIN);
+			break ;
+			case PORTD_ID : FLIP_BIT(PORTD,PIN);
+			break ;
+			}
+
+		}
+	else
+		{
+			/* in case of error in the Pin ID or PORT ID */
+			ERROR = E_NOT_OK ;
+		}
 
 
 
-
-
+	return ERROR;
 
 }
