@@ -44,6 +44,17 @@ DIO_LEVEL_TYPE MCAL_DIO_Std_FLIP_PORT_DIRECTION(
 DIO_LEVEL_TYPE MCAL_DIO_Std_FLIP_PIN_DIRECTION(
     DIO_PIN_ID *PinId // Pointer to the ID of the DIO pin.
 );
+// Function to write on port of a DIO port.
+STD_TYPE MCAL_DIO_Std_WRITE_PORT (
+     Dio_ConfigType * Config_type , // Pointer to the ID of the DIO port.
+	 uint8 data 
+);
+
+// Function to write in pin of a DIO pin.
+STD_TYPE MCAL_DIO_Std_WRITE_PIN (
+    Dio_ConfigType * Config_type  ,  // Pointer to the ID of the DIO pin.
+	DIO_LEVEL_TYPE volt
+);
 
 
 #endif /* DIO_INTERFACE_H_ */
