@@ -731,3 +731,312 @@ STD_TYPE MCAL_DIO_Std_FLIP_PIN_DIRECTION(uint8 PortId, uint8 PIN){
 	return ERROR;
 
 }
+
+/* function to write data om port *//*Dio_ConfigType is struct cary port types and pin types , and data  */
+STD_TYPE MCAL_DIO_Std_WRITE_PORT ( Dio_ConfigType * Config_type , uint8 data )
+{
+	/* enum to check if data assinged on port or not */
+	STD_TYPE STATUS = E_NOT_OK  ; 
+	/* switch to select port */
+	switch (Config_type ->PORT)
+	{
+		/* ports types */
+		case Config_type ->PORT->PORTA_ID :
+		PORTA = data ;
+		 STATUS = E_OK ;  
+		break ;
+		case Config_type ->PORT->PORTB_ID :
+		PORTB = data ;
+		STATUS = E_OK ; 
+		break ;
+		case Config_type ->PORT->PORTC_ID :
+		PORTC = data ;
+		STATUS = E_OK ; 
+		break ;
+		case Config_type ->PORT->PORTD_ID :
+		PORTD_ID = data ;
+		STATUS = E_OK ; 
+		break ;
+	}
+	return STATUS ; 
+}
+
+/* function to write on pin *//*Dio_ConfigType is struct cary port types and pin types , and cases of pin status HIGH OR  LOW  */
+STD_TYPE MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_TYPE volt)
+{
+	STD_TYPE STATUS = E_NOT_OK  ; 
+	if (volt == LOGIC_HIGH)
+	{
+		/* SWITCH TO SELECT PORT */
+		switch (Config_type ->PORT)
+		{
+			/* IF PORT A IS SLECTED */
+			case Config_type ->PORT->PORTA_ID :
+			/* SWITCH TO SELECT PIN */
+			switch ( Config_type -> PIN )
+			{
+				case Config_type -> PIN -> PIN0_ID :
+				SET_BIT(PORTA,Config_type -> PIN -> PIN0_ID);
+				break ;
+				case Config_type -> PIN -> PIN1_ID :
+				SET_BIT(PORTA,Config_type -> PIN -> PIN1_ID);
+				break ;
+				case Config_type -> PIN -> PIN2_ID :
+				SET_BIT(PORTA,Config_type -> PIN -> PIN2_ID);
+				break ;
+				case Config_type -> PIN -> PIN3_ID :
+				SET_BIT(PORTA,Config_type -> PIN -> PIN3_ID);
+				break ;
+				case Config_type -> PIN -> PIN4_ID :
+				SET_BIT(PORTA,Config_type -> PIN -> PIN4_ID);
+				break ;
+				case Config_type -> PIN -> PIN5_ID :
+				SET_BIT(PORTA,Config_type -> PIN -> PIN5_ID);
+				break ;
+				case Config_type -> PIN -> PIN6_ID :
+				SET_BIT(PORTA,Config_type -> PIN -> PIN6_ID);
+				break ;
+				case Config_type -> PIN -> PIN7_ID :
+				SET_BIT(PORTA,Config_type -> PIN -> PIN7_ID);
+				break ;
+			}
+			STATUS = E_OK ;
+			break;
+			/* IF PORT B IS SLECTED */
+			case Config_type ->PORT->PORTB_ID :
+			
+			switch ( Config_type -> PIN )
+			{
+				case Config_type -> PIN -> PIN0_ID :
+				SET_BIT(PORTB,Config_type -> PIN -> PIN0_ID);
+				break ;
+				case Config_type -> PIN -> PIN1_ID :
+				SET_BIT(PORTB,Config_type -> PIN -> PIN1_ID);
+				break ;
+				case Config_type -> PIN -> PIN2_ID :
+				SET_BIT(PORTB,Config_type -> PIN -> PIN2_ID);
+				break ;
+				case Config_type -> PIN -> PIN3_ID :
+				SET_BIT(PORTB,Config_type -> PIN -> PIN3_ID);
+				break ;
+				case Config_type -> PIN -> PIN4_ID :
+				SET_BIT(PORTB,Config_type -> PIN -> PIN4_ID);
+				break ;
+				case Config_type -> PIN -> PIN5_ID :
+				SET_BIT(PORTB,Config_type -> PIN -> PIN5_ID);
+				break ;
+				case Config_type -> PIN -> PIN6_ID :
+				SET_BIT(PORTB,Config_type -> PIN -> PIN6_ID);
+				break ;
+				case Config_type -> PIN -> PIN7_ID :
+				SET_BIT(PORTB,Config_type -> PIN -> PIN7_ID);
+				break ;
+			}
+			STATUS = E_OK ;
+			break;
+			
+			/* IF PORT C IS SLECTED */
+			case Config_type ->PORT->PORTC_ID :
+			
+			switch ( Config_type -> PIN )
+			{
+				case Config_type -> PIN -> PIN0_ID :
+				SET_BIT(PORTC,Config_type -> PIN -> PIN0_ID);
+				break ;
+				case Config_type -> PIN -> PIN1_ID :
+				SET_BIT(PORTC,Config_type -> PIN -> PIN1_ID);
+				break ;
+				case Config_type -> PIN -> PIN2_ID :
+				SET_BIT(PORTC,Config_type -> PIN -> PIN2_ID);
+				break ;
+				case Config_type -> PIN -> PIN3_ID :
+				SET_BIT(PORTC,Config_type -> PIN -> PIN3_ID);
+				break ;
+				case Config_type -> PIN -> PIN4_ID :
+				SET_BIT(PORTC,Config_type -> PIN -> PIN4_ID);
+				break ;
+				case Config_type -> PIN -> PIN5_ID :
+				SET_BIT(PORTC,Config_type -> PIN -> PIN5_ID);
+				break ;
+				case Config_type -> PIN -> PIN6_ID :
+				SET_BIT(PORTC,Config_type -> PIN -> PIN6_ID);
+				break ;
+				case Config_type -> PIN -> PIN7_ID :
+				SET_BIT(PORTC,Config_type -> PIN -> PIN7_ID);
+				break ;
+			}
+			STATUS = E_OK ;
+			break;
+			/* IF PORT D IS SLECTED */
+			case Config_type ->PORT->PORTD_ID :
+			
+			switch ( Config_type -> PIN )
+			{
+				case Config_type -> PIN -> PIN0_ID :
+				SET_BIT(PORTD,Config_type -> PIN -> PIN0_ID);
+				break ;
+				case Config_type -> PIN -> PIN1_ID :
+				SET_BIT(PORTD,Config_type -> PIN -> PIN1_ID);
+				break ;
+				case Config_type -> PIN -> PIN2_ID :
+				SET_BIT(PORTD,Config_type -> PIN -> PIN2_ID);
+				break ;
+				case Config_type -> PIN -> PIN3_ID :
+				SET_BIT(PORTD,Config_type -> PIN -> PIN3_ID);
+				break ;
+				case Config_type -> PIN -> PIN4_ID :
+				SET_BIT(PORTD,Config_type -> PIN -> PIN4_ID);
+				break ;
+				case Config_type -> PIN -> PIN5_ID :
+				SET_BIT(PORTD,Config_type -> PIN -> PIN5_ID);
+				break ;
+				case Config_type -> PIN -> PIN6_ID :
+				SET_BIT(PORTD,Config_type -> PIN -> PIN6_ID);
+				break ;
+				case Config_type -> PIN -> PIN7_ID :
+				SET_BIT(PORTD,Config_type -> PIN -> PIN7_ID);
+				break ;
+			}
+			STATUS = E_OK ;
+			break;
+		}
+	}
+	// if you want to export on port 0 to  Pin
+	else
+	{
+		/* SWITCH TO SELECT PORT */
+		switch (Config_type ->PORT)
+		{
+			/* IF PORT A IS SLECTED */
+			case Config_type ->PORT->PORTA_ID :
+			/* SWITCH TO SELECT PIN */
+			switch ( Config_type -> PIN )
+			{
+				case Config_type -> PIN -> PIN0_ID :
+				CLR_BIT(PORTA,Config_type -> PIN -> PIN0_ID);
+				break ;
+				case Config_type -> PIN -> PIN1_ID :
+				CLR_BIT(PORTA,Config_type -> PIN -> PIN1_ID);
+				break ;
+				case Config_type -> PIN -> PIN2_ID :
+				CLR_BIT(PORTA,Config_type -> PIN -> PIN2_ID);
+				break ;
+				case Config_type -> PIN -> PIN3_ID :
+				CLR_BIT(PORTA,Config_type -> PIN -> PIN3_ID);
+				break ;
+				case Config_type -> PIN -> PIN4_ID :
+				CLR_BIT(PORTA,Config_type -> PIN -> PIN4_ID);
+				break ;
+				case Config_type -> PIN -> PIN5_ID :
+				CLR_BIT(PORTA,Config_type -> PIN -> PIN5_ID);
+				break ;
+				case Config_type -> PIN -> PIN6_ID :
+				CLR_BIT(PORTA,Config_type -> PIN -> PIN6_ID);
+				break ;
+				case Config_type -> PIN -> PIN7_ID :
+				CLR_BIT(PORTA,Config_type -> PIN -> PIN7_ID);
+				break ;
+			}
+			STATUS = E_OK ;
+			break;
+			/* IF PORT B IS SLECTED */
+			case Config_type ->PORT->PORTB_ID :
+			
+			switch ( Config_type -> PIN )
+			{
+				case Config_type -> PIN -> PIN0_ID :
+				CLR_BIT(PORTB,Config_type -> PIN -> PIN0_ID);
+				break ;
+				case Config_type -> PIN -> PIN1_ID :
+				CLR_BIT(PORTB,Config_type -> PIN -> PIN1_ID);
+				break ;
+				case Config_type -> PIN -> PIN2_ID :
+				CLR_BIT(PORTB,Config_type -> PIN -> PIN2_ID);
+				break ;
+				case Config_type -> PIN -> PIN3_ID :
+				CLR_BIT(PORTB,Config_type -> PIN -> PIN3_ID);
+				break ;
+				case Config_type -> PIN -> PIN4_ID :
+				CLR_BIT(PORTB,Config_type -> PIN -> PIN4_ID);
+				break ;
+				case Config_type -> PIN -> PIN5_ID :
+				CLR_BIT(PORTB,Config_type -> PIN -> PIN5_ID);
+				break ;
+				case Config_type -> PIN -> PIN6_ID :
+				CLR_BIT(PORTB,Config_type -> PIN -> PIN6_ID);
+				break ;
+				case Config_type -> PIN -> PIN7_ID :
+				CLR_BIT(PORTB,Config_type -> PIN -> PIN7_ID);
+				break ;
+			}
+			STATUS = E_OK ;
+			break;
+			
+			/* IF PORT C IS SLECTED */
+			case Config_type ->PORT->PORTC_ID :
+			
+			switch ( Config_type -> PIN )
+			{
+				case Config_type -> PIN -> PIN0_ID :
+				CLR_BIT(PORTC,Config_type -> PIN -> PIN0_ID);
+				break ;
+				case Config_type -> PIN -> PIN1_ID :
+				CLR_BIT(PORTC,Config_type -> PIN -> PIN1_ID);
+				break ;
+				case Config_type -> PIN -> PIN2_ID :
+				CLR_BIT(PORTC,Config_type -> PIN -> PIN2_ID);
+				break ;
+				case Config_type -> PIN -> PIN3_ID :
+				CLR_BIT(PORTC,Config_type -> PIN -> PIN3_ID);
+				break ;
+				case Config_type -> PIN -> PIN4_ID :
+				CLR_BIT(PORTC,Config_type -> PIN -> PIN4_ID);
+				break ;
+				case Config_type -> PIN -> PIN5_ID :
+				CLR_BIT(PORTC,Config_type -> PIN -> PIN5_ID);
+				break ;
+				case Config_type -> PIN -> PIN6_ID :
+				CLR_BIT(PORTC,Config_type -> PIN -> PIN6_ID);
+				break ;
+				case Config_type -> PIN -> PIN7_ID :
+				CLR_BIT(PORTC,Config_type -> PIN -> PIN7_ID);
+				break ;
+			}
+			STATUS = E_OK ;
+			break;
+			/* IF PORT D IS SLECTED */
+			case Config_type ->PORT->PORTD_ID :
+			
+			switch ( Config_type -> PIN )
+			{
+				case Config_type -> PIN -> PIN0_ID :
+				CLR_BIT(PORTD,Config_type -> PIN -> PIN0_ID);
+				break ;
+				case Config_type -> PIN -> PIN1_ID :
+				CLR_BIT(PORTD,Config_type -> PIN -> PIN1_ID);
+				break ;
+				case Config_type -> PIN -> PIN2_ID :
+				CLR_BIT(PORTD,Config_type -> PIN -> PIN2_ID);
+				break ;
+				case Config_type -> PIN -> PIN3_ID :
+				CLR_BIT(PORTD,Config_type -> PIN -> PIN3_ID);
+				break ;
+				case Config_type -> PIN -> PIN4_ID :
+				CLR_BIT(PORTD,Config_type -> PIN -> PIN4_ID);
+				break ;
+				case Config_type -> PIN -> PIN5_ID :
+				CLR_BIT(PORTD,Config_type -> PIN -> PIN5_ID);
+				break ;
+				case Config_type -> PIN -> PIN6_ID :
+				CLR_BIT(PORTD,Config_type -> PIN -> PIN6_ID);
+				break ;
+				case Config_type -> PIN -> PIN7_ID :
+				CLR_BIT(PORTD,Config_type -> PIN -> PIN7_ID);
+				break ;
+			}
+			STATUS = E_OK ;
+			break;
+		}
+	}
+}
+
