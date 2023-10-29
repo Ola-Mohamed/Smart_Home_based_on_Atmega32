@@ -29,4 +29,11 @@ typedef signed long long      sint64;         /* -9223372036854775808 .. 9223372
 typedef float                 float32;
 typedef double                float64;
 
+
+
+enum{
+    E_OK=0,
+	E_NOT_OK=1,
+}EXIT_STD_TYPE;
+
 #endif /* STD_TYPES_H_ */
