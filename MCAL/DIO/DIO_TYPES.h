@@ -1,18 +1,23 @@
-/*
- * DIO_TYPES.h
+/******************************************************************************
  *
- *  Created on: 24 Oct 2023
- *      Author: 20128
- */
 
+ * Module: DIO
+ *
+ * File Name: DIO_TYPES.h
+ *
+ * Author: Nti Team
+ *
+ * ******************************************************************************/
 #ifndef DIO_TYPES_H_
 #define DIO_TYPES_H_
+
+#include "STD_TYPES.h"
 
 // Type definition for a standard error code.
 typedef enum {
   E_OK, // The operation was successful.
   E_NOT_OK, // The operation failed.
-} STD_TYPE;
+} STD_TYPE_DIO;
 
 
 // Type definition for a DIO logic level.
@@ -25,6 +30,7 @@ typedef enum {
 typedef enum {
   PIN_INPUT, // Pin is configured as an input.
   PIN_OUTPUT, // Pin is configured as an output.
+  PIN_INFREE,// pin is configured as pulldown
 } DIO_PIN_DIRECTION_TYPE;
 
 // Type definition for a DIO port direction.

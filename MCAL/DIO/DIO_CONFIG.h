@@ -1,10 +1,13 @@
-/*
- * DIO_CONFIG.h
+/******************************************************************************
  *
- *  Created on: 24 Oct 2023
- *      Author: 20128
- */
 
+ * Module: DIO
+ *
+ * File Name: DIO_CONFIG.h
+ *
+ * Author: Nti Team
+ *
+ * ******************************************************************************/
 #ifndef DIO_CONFIG_H_
 #define DIO_CONFIG_H_
 

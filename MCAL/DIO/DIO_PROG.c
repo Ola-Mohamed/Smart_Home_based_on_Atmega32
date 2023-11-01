@@ -1,34 +1,51 @@
-/*
- * DIO_PROG.c
+/******************************************************************************
  *
- *  Created on: 24 Oct 2023
- *      Author: 20128
- */
-
-#include "MemMap.h"
-#include "DIO_TYPES.h"
-#include "STD_TYPES.h"
-#include "DIO_CONFIG.h"
-#include "DIO_PRIVATE.h"
+ * Module: DIO
+ *
+ * File Name: DIO_PROG.h
+ *
+ * Author: Nti Team
+ *
+ * ******************************************************************************/
 #include "DIO_INTERFACE.h"
-#include "Utils.h"
+
+
+
+/************************************************************************************
+* Service Name: MCAL_DIO_INIT
+* Parameters (in): None
+* Parameters (inout): None
+* Parameters (out): None
+* Return value: None
+* Description: Function to Initialize the Dio module.
+************************************************************************************/
 
 void MCAL_DIO_INIT(){
 
 	Dio_ConfigType configType;
-	
+
 	for ( configType.PORT =PORTA ; configType.PORT<TOTALPORTS_ID; configType.PORT++)
 	{
 		for ( configType.PIN =PIN0_ID ; configType.PIN<TOTALPINS_ID; configType.PIN++)
 		{
 			MCAL_DIO_INIT_PINS( &configType , pin_StatusArr[configType.PORT][configType.PIN]);
 		}
-	
+
 	}
 }
 
+/************************************************************************************
+* Service Name: MCAL_DIO_INIT_PINS
+* Parameters (in): Dio_ConfigType -  Pointer to post-build configuration data
+*                  DIO_PIN_DIRECTION_TYPE - direction for pins
+* Parameters (inout): None
+* Parameters (out): None
+* Return value: None
+* Description: Function to Initialize the Dio module.
+************************************************************************************/
+
 static void MCAL_DIO_INIT_PINS(Dio_ConfigType * configType , DIO_PIN_DIRECTION_TYPE pinStatus){
-	
+
 	if (pinStatus == PIN_OUTPUT)
 	{
 		switch(configType->PORT){
@@ -565,120 +582,122 @@ static void MCAL_DIO_INIT_PINS(Dio_ConfigType * configType , DIO_PIN_DIRECTION_T
 	}else{
 		/*DO Nothing*/
 	}
-	
-			
 }
 
-STD_TYPE MCAL_DIO_Std_WRITE_PORT_DIRECTION(DIO_PORT_ID *PortId,DIO_PORT_DIRECTION_TYPE *PortLevel){
+/************************************************************************************
+* Service Name:  MCAL_DIO_READ_PORT_DIRECTION
+* Parameters (in): DIO_PORT_ID - port id
+* Parameters (inout): None
+* Parameters (out): None
+* Return value: DIO_LEVEL_TYPE
+* Description: Function to Read and return the value of the required port.
+************************************************************************************/
+DIO_LEVEL_TYPE MCAL_DIO_READ_PORT_DIRECTION(DIO_PORT_ID PortId){
 
-
-}
-
-STD_TYPE MCAL_DIO_Std_WRITE_PIN_DIRECTION(DIO_PIN_ID *PinId,DIO_PIN_DIRECTION_TYPE *PinLevel){
-
-
-
-
-
-}
-
-
- /* Description :
- * Read and return the value of the required port.
- */
-DIO_LEVEL_TYPE MCAL_DIO_Std_READ_PORT_DIRECTION(DIO_PORT_ID PortId){
-
-	DIO_PORT_ID port_num=PortId/8;   //result of divi is number of port
-	DIO_LEVEL_TYPE value=LOGIC_LOW;
+	DIO_PORT_ID LOC_port_num = PortId/8;   //result of divi is number of port
+	DIO_LEVEL_TYPE LOC_value = LOGIC_LOW;
 
 
 
 	/* Read the port value as required */
-	switch(port_num)
+	switch(LOC_port_num)
 	{
 	case PORTA_ID:
-		value = PINA;
+		LOC_value = PINA;
 		break;
 	case PORTB_ID:
-		value = PINB;
+		LOC_value = PINB;
 		break;
 	case PORTC_ID:
-		value = PINC;
+		LOC_value = PINC;
 		break;
 	case PORTD_ID:
-		value = PIND;
+		LOC_value = PIND;
 		break;
 	}
 
 
-	return value;
+	return LOC_value;
 }
 
-/*
- * Description :
- * Read and return the value for the required pin, it should be Logic High or Logic Low.
- */
 
-DIO_LEVEL_TYPE MCAL_DIO_Std_READ_PIN_DIRECTION(DIO_PORT_ID PortId,DIO_PIN_ID PinId){
-	DIO_PORT_ID port_num=PortId/8;  //result of div is number of port
-	DIO_PIN_ID pin_num =PinId %8;     //result of modulo is number of pin
-	DIO_LEVEL_TYPE pin_value=LOGIC_LOW;
+/************************************************************************************
+* Service Name:  MCAL_DIO_READ_PIN_DIRECTION
+* Parameters (in): DIO_PORT_ID - port id
+*                  DIO_PIN_ID  - pin id
+* Parameters (inout): None
+* Parameters (out): None
+* Return value: DIO_LEVEL_TYPE
+* Description: Function to Read and return the value for the required pin, it should
+* be Logic High or Logic Low.
+************************************************************************************/
 
-	switch(port_num)
+DIO_LEVEL_TYPE MCAL_DIO_READ_PIN_DIRECTION(DIO_PORT_ID PortId,DIO_PIN_ID PinId){
+
+	DIO_PORT_ID LOC_port_num  =  PortId/8;  //result of div is number of port
+	DIO_PIN_ID LOC_pin_num = PinId %8;     //result of modulo is number of pin
+	DIO_LEVEL_TYPE LOC_pin_value = LOGIC_LOW;
+
+	switch(LOC_port_num)
 	{
 	case PORTA_ID:
-		if(BIT_IS_SET(PINA,pin_num))
+		if(BIT_IS_SET(PINA,LOC_pin_num))
 		{
-			pin_value = LOGIC_HIGH;
+			LOC_pin_value = LOGIC_HIGH;
 		}
 		else
 		{
-			pin_value = LOGIC_LOW;
+			LOC_pin_value = LOGIC_LOW;
 		}
 		break;
 	case PORTB_ID:
-		if(BIT_IS_SET(PINB,pin_num))
+		if(BIT_IS_SET(PINB,LOC_pin_num))
 		{
-			pin_value = LOGIC_HIGH;
+			LOC_pin_value = LOGIC_HIGH;
 		}
 		else
 		{
-			pin_value = LOGIC_LOW;
+			LOC_pin_value = LOGIC_LOW;
 		}
 		break;
 	case PORTC_ID:
-		if(BIT_IS_SET(PINC,pin_num))
+		if(BIT_IS_SET(PINC,LOC_pin_num))
 		{
-			pin_value = LOGIC_HIGH;
+			LOC_pin_value = LOGIC_HIGH;
 		}
 		else
 		{
-			pin_value = LOGIC_LOW;
+			LOC_pin_value = LOGIC_LOW;
 		}
 		break;
 	case PORTD_ID:
-		if(BIT_IS_SET(PIND,pin_num))
+		if(BIT_IS_SET(PIND,LOC_pin_num))
 		{
-			pin_value = LOGIC_HIGH;
+			LOC_pin_value = LOGIC_HIGH;
 		}
 		else
 		{
-			pin_value = LOGIC_LOW;
+			LOC_pin_value = LOGIC_LOW;
 		}
 		break;
 
 	}
 
-	return pin_value;
-
-
-
+	return LOC_pin_value;
 }
 
+/************************************************************************************
+* Service Name:  MCAL_DIO_Std_FLIP_PORT_DIRECTION
+* Parameters (in): DIO_PORT_ID - port id
+* Parameters (inout): None
+* Parameters (out): None
+* Return value: STD_TYPE_DIO
+* Description: Function to toggle port
+************************************************************************************/
 
-STD_TYPE MCAL_DIO_Std_FLIP_PORT_DIRECTION(DIO_PORT_ID PortId){
+STD_TYPE_DIO MCAL_DIO_Std_FLIP_PORT_DIRECTION(DIO_PORT_ID PortId){
 
-	STD_TYPE ERROR= E_OK;
+	STD_TYPE_DIO LOC_error= E_OK;
 		if (PortId <= 3)
 			{
 				switch (PortId)
@@ -697,14 +716,23 @@ STD_TYPE MCAL_DIO_Std_FLIP_PORT_DIRECTION(DIO_PORT_ID PortId){
 		else
 			{
 				/* in case of error in the Pin ID or PORT ID */
-				ERROR = E_NOT_OK ;
+			LOC_error = E_NOT_OK ;
 			}
-
-
+       return LOC_error;
 }
-STD_TYPE MCAL_DIO_Std_FLIP_PIN_DIRECTION(DIO_PORT_ID PortId, DIO_PIN_ID PIN){
 
-	STD_TYPE ERROR= E_OK;
+/************************************************************************************
+* Service Name:  MCAL_DIO_Std_FLIP_PIN_DIRECTION
+* Parameters (in): DIO_PORT_ID - port id
+*                  DIO_PIN_ID  - pin id
+* Parameters (inout): None
+* Parameters (out): None
+* Return value: STD_TYPE_DIO
+* Description: Function to toggle specific pin
+************************************************************************************/
+STD_TYPE_DIO MCAL_DIO_Std_FLIP_PIN_DIRECTION(DIO_PORT_ID PortId, DIO_PIN_ID PIN){
+
+	STD_TYPE_DIO ERROR= E_OK;
 	if (PIN <= 7)
 		{
 			switch (PortId)
@@ -732,30 +760,38 @@ STD_TYPE MCAL_DIO_Std_FLIP_PIN_DIRECTION(DIO_PORT_ID PortId, DIO_PIN_ID PIN){
 
 }
 
-/* function to write data om port *//*Dio_ConfigType is struct cary port types and pin types , and data  */
-STD_TYPE MCAL_DIO_Std_WRITE_PORT ( Dio_ConfigType * Config_type , uint8 data )
+/************************************************************************************
+* Service Name:  MCAL_DIO_Std_WRITE_PORT
+* Parameters (in): Dio_ConfigType - Pointer to post-build configuration data
+*                  Data
+* Parameters (inout): None
+* Parameters (out): None
+* Return value: STD_TYPE_DIO
+* Description: Function to write data on specific port
+************************************************************************************/
+STD_TYPE_DIO MCAL_DIO_Std_WRITE_PORT ( Dio_ConfigType * Config_type , uint8 data )
 {
 	/* enum to check if data assigned on port or not */
-	STD_TYPE STATUS = E_NOT_OK  ;
+	STD_TYPE_DIO LOC_status = E_NOT_OK  ;
 	/* switch to select port */
 	switch (Config_type ->PORT)
 	{
 		/* ports types */
 		case PORTA_ID :
 		PORTA = data ;
-		STATUS = E_OK ;
+		LOC_status = E_OK ;
 		break ;
 		case PORTB_ID :
 		PORTB = data ;
-		STATUS = E_OK ;
+		LOC_status = E_OK ;
 		break ;
 		case PORTC_ID :
 		PORTC = data ;
-		STATUS = E_OK ;
+		LOC_status = E_OK ;
 		break ;
 		case PORTD_ID :
 		PORTD = data ;
-		STATUS = E_OK ;
+		LOC_status = E_OK ;
 		break ;
 		case TOTALPORTS_ID :
 		/*Do Nothing*/
@@ -764,15 +800,23 @@ STD_TYPE MCAL_DIO_Std_WRITE_PORT ( Dio_ConfigType * Config_type , uint8 data )
 		/*Do Nothing*/
 		break;
 	}
-	return STATUS ;
+	return LOC_status ;
 }
 
 
-/* function to write on pin *//*Dio_ConfigType is struct cary port types and pin types , and cases of pin status HIGH OR  LOW  */
-STD_TYPE MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_TYPE volt)
+/************************************************************************************
+* Service Name:  MCAL_DIO_Std_WRITE_PORT
+* Parameters (in): Dio_ConfigType -  Pointer to post-build configuration data
+*                  VOLT
+* Parameters (inout): None
+* Parameters (out): None
+* Return value: STD_TYPE_DIO
+* Description: Function to write data on specific pin
+************************************************************************************/
+STD_TYPE_DIO MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_TYPE VOLT)
 {
-	STD_TYPE STATUS = E_NOT_OK  ;
-	if (volt == LOGIC_HIGH)
+	STD_TYPE_DIO LOC_status = E_NOT_OK  ;
+	if (VOLT == LOGIC_HIGH)
 	{
 		/* SWITCH TO SELECT PORT */
 		switch (Config_type ->PORT)
@@ -806,20 +850,20 @@ STD_TYPE MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_TYPE 
 				case  PIN7_ID :
 				SET_BIT(PORTA, PIN7_ID);
 				break ;
-				
+
 				case TOTALPINS_ID :
 				/*Do Nothing*/
 				break;
-				
+
 				default :
 				/*Do Nothing*/
 				break;
 			}
-			STATUS = E_OK ;
+			LOC_status = E_OK ;
 			break;
 			/* IF PORT B IS SLECTED */
 			case PORTB_ID :
-			
+
 			switch ( Config_type -> PIN )
 			{
 				case  PIN0_ID :
@@ -846,21 +890,21 @@ STD_TYPE MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_TYPE 
 				case  PIN7_ID :
 				SET_BIT(PORTB, PIN7_ID);
 				break ;
-				
+
 				case TOTALPINS_ID :
 				/*Do Nothing*/
 				break;
-				
+
 				default :
 				/*Do Nothing*/
 				break;
 			}
-			STATUS = E_OK ;
+			LOC_status = E_OK ;
 			break;
-			
+
 			/* IF PORT C IS SLECTED */
 			case PORTC_ID :
-			
+
 			switch ( Config_type -> PIN )
 			{
 				case  PIN0_ID :
@@ -887,20 +931,20 @@ STD_TYPE MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_TYPE 
 				case  PIN7_ID :
 				SET_BIT(PORTC, PIN7_ID);
 				break ;
-				
+
 				case TOTALPINS_ID :
 				/*Do Nothing*/
 				break;
-				
+
 				default :
 				/*Do Nothing*/
 				break;
 			}
-			STATUS = E_OK ;
+			LOC_status = E_OK ;
 			break;
 			/* IF PORT D IS SLECTED */
 			case PORTD_ID :
-			
+
 			switch ( Config_type -> PIN )
 			{
 				case  PIN0_ID :
@@ -927,22 +971,22 @@ STD_TYPE MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_TYPE 
 				case  PIN7_ID :
 				SET_BIT(PORTD, PIN7_ID);
 				break ;
-				
+
 				case TOTALPINS_ID :
 				/*Do Nothing*/
 				break;
-				
+
 				default :
 				/*Do Nothing*/
 				break;
 			}
-			STATUS = E_OK ;
+			LOC_status = E_OK ;
 			break;
-			
+
 			case TOTALPORTS_ID :
 			/*Do Nothing*/
 			break;
-			
+
 			default :
 			/*Do Nothing*/
 			break;
@@ -991,11 +1035,11 @@ STD_TYPE MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_TYPE 
 				/*Do Nothing*/
 				break;
 			}
-			STATUS = E_OK ;
+			LOC_status = E_OK ;
 			break;
 			/* IF PORT B IS SLECTED */
 			case PORTB_ID :
-			
+
 			switch ( Config_type -> PIN )
 			{
 				case  PIN0_ID :
@@ -1022,21 +1066,21 @@ STD_TYPE MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_TYPE 
 				case  PIN7_ID :
 				CLEAR_BIT(PORTB, PIN7_ID);
 				break ;
-				
+
 				case TOTALPINS_ID :
 				/*Do Nothing*/
 				break;
-				
+
 				default :
 				/*Do Nothing*/
 				break;
 			}
-			STATUS = E_OK ;
+			LOC_status = E_OK ;
 			break;
-			
+
 			/* IF PORT C IS SLECTED */
 			case PORTC_ID :
-			
+
 			switch ( Config_type -> PIN )
 			{
 				case  PIN0_ID :
@@ -1063,20 +1107,20 @@ STD_TYPE MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_TYPE 
 				case  PIN7_ID :
 				CLEAR_BIT(PORTC, PIN7_ID);
 				break ;
-				
+
 				case TOTALPINS_ID :
 				/*Do Nothing*/
 				break;
-				
+
 				default :
 				/*Do Nothing*/
 				break;
 			}
-			STATUS = E_OK ;
+			LOC_status = E_OK ;
 			break;
 			/* IF PORT D IS SLECTED */
 			case PORTD_ID :
-			
+
 			switch ( Config_type -> PIN )
 			{
 				case  PIN0_ID :
@@ -1103,16 +1147,16 @@ STD_TYPE MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_TYPE 
 				case  PIN7_ID :
 				CLEAR_BIT(PORTD, PIN7_ID);
 				break ;
-				
+
 				case TOTALPINS_ID :
 				/*Do Nothing*/
 				break;
-				
+
 				default :
 				/*Do Nothing*/
 				break;
 			}
-			STATUS = E_OK ;
+			LOC_status = E_OK ;
 			break;
 			case TOTALPORTS_ID :
 			/*Do Nothing*/
@@ -1122,7 +1166,6 @@ STD_TYPE MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_TYPE 
 			break;
 		}
 	}
-	return STATUS;
+	return LOC_status;
 }
-
 
