@@ -735,170 +735,218 @@ STD_TYPE MCAL_DIO_Std_FLIP_PIN_DIRECTION(DIO_PORT_ID PortId, DIO_PIN_ID PIN){
 /* function to write data om port *//*Dio_ConfigType is struct cary port types and pin types , and data  */
 STD_TYPE MCAL_DIO_Std_WRITE_PORT ( Dio_ConfigType * Config_type , uint8 data )
 {
-	/* enum to check if data assinged on port or not */
-	STD_TYPE STATUS = E_NOT_OK  ; 
+	/* enum to check if data assigned on port or not */
+	STD_TYPE STATUS = E_NOT_OK  ;
 	/* switch to select port */
 	switch (Config_type ->PORT)
 	{
 		/* ports types */
-		case Config_type ->PORT->PORTA_ID :
+		case PORTA_ID :
 		PORTA = data ;
-		 STATUS = E_OK ;  
+		STATUS = E_OK ;
 		break ;
-		case Config_type ->PORT->PORTB_ID :
+		case PORTB_ID :
 		PORTB = data ;
-		STATUS = E_OK ; 
+		STATUS = E_OK ;
 		break ;
-		case Config_type ->PORT->PORTC_ID :
+		case PORTC_ID :
 		PORTC = data ;
-		STATUS = E_OK ; 
+		STATUS = E_OK ;
 		break ;
-		case Config_type ->PORT->PORTD_ID :
-		PORTD_ID = data ;
-		STATUS = E_OK ; 
+		case PORTD_ID :
+		PORTD = data ;
+		STATUS = E_OK ;
 		break ;
+		case TOTALPORTS_ID :
+		/*Do Nothing*/
+		break;
+		default:
+		/*Do Nothing*/
+		break;
 	}
-	return STATUS ; 
+	return STATUS ;
 }
+
 
 /* function to write on pin *//*Dio_ConfigType is struct cary port types and pin types , and cases of pin status HIGH OR  LOW  */
 STD_TYPE MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_TYPE volt)
 {
-	STD_TYPE STATUS = E_NOT_OK  ; 
+	STD_TYPE STATUS = E_NOT_OK  ;
 	if (volt == LOGIC_HIGH)
 	{
 		/* SWITCH TO SELECT PORT */
 		switch (Config_type ->PORT)
 		{
 			/* IF PORT A IS SLECTED */
-			case Config_type ->PORT->PORTA_ID :
+			case PORTA_ID :
 			/* SWITCH TO SELECT PIN */
 			switch ( Config_type -> PIN )
 			{
-				case Config_type -> PIN -> PIN0_ID :
-				SET_BIT(PORTA,Config_type -> PIN -> PIN0_ID);
+				case  PIN0_ID :
+				SET_BIT(PORTA, PIN0_ID);
 				break ;
-				case Config_type -> PIN -> PIN1_ID :
-				SET_BIT(PORTA,Config_type -> PIN -> PIN1_ID);
+				case  PIN1_ID :
+				SET_BIT(PORTA, PIN1_ID);
 				break ;
-				case Config_type -> PIN -> PIN2_ID :
-				SET_BIT(PORTA,Config_type -> PIN -> PIN2_ID);
+				case PIN2_ID :
+				SET_BIT(PORTA, PIN2_ID);
 				break ;
-				case Config_type -> PIN -> PIN3_ID :
-				SET_BIT(PORTA,Config_type -> PIN -> PIN3_ID);
+				case  PIN3_ID :
+				SET_BIT(PORTA, PIN3_ID);
 				break ;
-				case Config_type -> PIN -> PIN4_ID :
-				SET_BIT(PORTA,Config_type -> PIN -> PIN4_ID);
+				case  PIN4_ID :
+				SET_BIT(PORTA, PIN4_ID);
 				break ;
-				case Config_type -> PIN -> PIN5_ID :
-				SET_BIT(PORTA,Config_type -> PIN -> PIN5_ID);
+				case PIN5_ID :
+				SET_BIT(PORTA, PIN5_ID);
 				break ;
-				case Config_type -> PIN -> PIN6_ID :
-				SET_BIT(PORTA,Config_type -> PIN -> PIN6_ID);
+				case PIN6_ID :
+				SET_BIT(PORTA, PIN6_ID);
 				break ;
-				case Config_type -> PIN -> PIN7_ID :
-				SET_BIT(PORTA,Config_type -> PIN -> PIN7_ID);
+				case  PIN7_ID :
+				SET_BIT(PORTA, PIN7_ID);
 				break ;
+				
+				case TOTALPINS_ID :
+				/*Do Nothing*/
+				break;
+				
+				default :
+				/*Do Nothing*/
+				break;
 			}
 			STATUS = E_OK ;
 			break;
 			/* IF PORT B IS SLECTED */
-			case Config_type ->PORT->PORTB_ID :
+			case PORTB_ID :
 			
 			switch ( Config_type -> PIN )
 			{
-				case Config_type -> PIN -> PIN0_ID :
-				SET_BIT(PORTB,Config_type -> PIN -> PIN0_ID);
+				case  PIN0_ID :
+				SET_BIT(PORTB, PIN0_ID);
 				break ;
-				case Config_type -> PIN -> PIN1_ID :
-				SET_BIT(PORTB,Config_type -> PIN -> PIN1_ID);
+				case  PIN1_ID :
+				SET_BIT(PORTB, PIN1_ID);
 				break ;
-				case Config_type -> PIN -> PIN2_ID :
-				SET_BIT(PORTB,Config_type -> PIN -> PIN2_ID);
+				case PIN2_ID :
+				SET_BIT(PORTB, PIN2_ID);
 				break ;
-				case Config_type -> PIN -> PIN3_ID :
-				SET_BIT(PORTB,Config_type -> PIN -> PIN3_ID);
+				case  PIN3_ID :
+				SET_BIT(PORTB, PIN3_ID);
 				break ;
-				case Config_type -> PIN -> PIN4_ID :
-				SET_BIT(PORTB,Config_type -> PIN -> PIN4_ID);
+				case  PIN4_ID :
+				SET_BIT(PORTB, PIN4_ID);
 				break ;
-				case Config_type -> PIN -> PIN5_ID :
-				SET_BIT(PORTB,Config_type -> PIN -> PIN5_ID);
+				case  PIN5_ID :
+				SET_BIT(PORTB, PIN5_ID);
 				break ;
-				case Config_type -> PIN -> PIN6_ID :
-				SET_BIT(PORTB,Config_type -> PIN -> PIN6_ID);
+				case  PIN6_ID :
+				SET_BIT(PORTB, PIN6_ID);
 				break ;
-				case Config_type -> PIN -> PIN7_ID :
-				SET_BIT(PORTB,Config_type -> PIN -> PIN7_ID);
+				case  PIN7_ID :
+				SET_BIT(PORTB, PIN7_ID);
 				break ;
+				
+				case TOTALPINS_ID :
+				/*Do Nothing*/
+				break;
+				
+				default :
+				/*Do Nothing*/
+				break;
 			}
 			STATUS = E_OK ;
 			break;
 			
 			/* IF PORT C IS SLECTED */
-			case Config_type ->PORT->PORTC_ID :
+			case PORTC_ID :
 			
 			switch ( Config_type -> PIN )
 			{
-				case Config_type -> PIN -> PIN0_ID :
-				SET_BIT(PORTC,Config_type -> PIN -> PIN0_ID);
+				case  PIN0_ID :
+				SET_BIT(PORTC, PIN0_ID);
 				break ;
-				case Config_type -> PIN -> PIN1_ID :
-				SET_BIT(PORTC,Config_type -> PIN -> PIN1_ID);
+				case  PIN1_ID :
+				SET_BIT(PORTC, PIN1_ID);
 				break ;
-				case Config_type -> PIN -> PIN2_ID :
-				SET_BIT(PORTC,Config_type -> PIN -> PIN2_ID);
+				case  PIN2_ID :
+				SET_BIT(PORTC, PIN2_ID);
 				break ;
-				case Config_type -> PIN -> PIN3_ID :
-				SET_BIT(PORTC,Config_type -> PIN -> PIN3_ID);
+				case  PIN3_ID :
+				SET_BIT(PORTC, PIN3_ID);
 				break ;
-				case Config_type -> PIN -> PIN4_ID :
-				SET_BIT(PORTC,Config_type -> PIN -> PIN4_ID);
+				case  PIN4_ID :
+				SET_BIT(PORTC, PIN4_ID);
 				break ;
-				case Config_type -> PIN -> PIN5_ID :
-				SET_BIT(PORTC,Config_type -> PIN -> PIN5_ID);
+				case PIN5_ID :
+				SET_BIT(PORTC, PIN5_ID);
 				break ;
-				case Config_type -> PIN -> PIN6_ID :
-				SET_BIT(PORTC,Config_type -> PIN -> PIN6_ID);
+				case  PIN6_ID :
+				SET_BIT(PORTC, PIN6_ID);
 				break ;
-				case Config_type -> PIN -> PIN7_ID :
-				SET_BIT(PORTC,Config_type -> PIN -> PIN7_ID);
+				case  PIN7_ID :
+				SET_BIT(PORTC, PIN7_ID);
 				break ;
+				
+				case TOTALPINS_ID :
+				/*Do Nothing*/
+				break;
+				
+				default :
+				/*Do Nothing*/
+				break;
 			}
 			STATUS = E_OK ;
 			break;
 			/* IF PORT D IS SLECTED */
-			case Config_type ->PORT->PORTD_ID :
+			case PORTD_ID :
 			
 			switch ( Config_type -> PIN )
 			{
-				case Config_type -> PIN -> PIN0_ID :
-				SET_BIT(PORTD,Config_type -> PIN -> PIN0_ID);
+				case  PIN0_ID :
+				SET_BIT(PORTD, PIN0_ID);
 				break ;
-				case Config_type -> PIN -> PIN1_ID :
-				SET_BIT(PORTD,Config_type -> PIN -> PIN1_ID);
+				case  PIN1_ID :
+				SET_BIT(PORTD, PIN1_ID);
 				break ;
-				case Config_type -> PIN -> PIN2_ID :
-				SET_BIT(PORTD,Config_type -> PIN -> PIN2_ID);
+				case  PIN2_ID :
+				SET_BIT(PORTD, PIN2_ID);
 				break ;
-				case Config_type -> PIN -> PIN3_ID :
-				SET_BIT(PORTD,Config_type -> PIN -> PIN3_ID);
+				case  PIN3_ID :
+				SET_BIT(PORTD, PIN3_ID);
 				break ;
-				case Config_type -> PIN -> PIN4_ID :
-				SET_BIT(PORTD,Config_type -> PIN -> PIN4_ID);
+				case PIN4_ID :
+				SET_BIT(PORTD, PIN4_ID);
 				break ;
-				case Config_type -> PIN -> PIN5_ID :
-				SET_BIT(PORTD,Config_type -> PIN -> PIN5_ID);
+				case PIN5_ID :
+				SET_BIT(PORTD, PIN5_ID);
 				break ;
-				case Config_type -> PIN -> PIN6_ID :
-				SET_BIT(PORTD,Config_type -> PIN -> PIN6_ID);
+				case  PIN6_ID :
+				SET_BIT(PORTD, PIN6_ID);
 				break ;
-				case Config_type -> PIN -> PIN7_ID :
-				SET_BIT(PORTD,Config_type -> PIN -> PIN7_ID);
+				case  PIN7_ID :
+				SET_BIT(PORTD, PIN7_ID);
 				break ;
+				
+				case TOTALPINS_ID :
+				/*Do Nothing*/
+				break;
+				
+				default :
+				/*Do Nothing*/
+				break;
 			}
 			STATUS = E_OK ;
 			break;
+			
+			case TOTALPORTS_ID :
+			/*Do Nothing*/
+			break;
+			
+			default :
+			/*Do Nothing*/
+			break;
+
 		}
 	}
 	// if you want to export on port 0 to  Pin
@@ -908,135 +956,173 @@ STD_TYPE MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_TYPE 
 		switch (Config_type ->PORT)
 		{
 			/* IF PORT A IS SLECTED */
-			case Config_type ->PORT->PORTA_ID :
+			case PORTA_ID :
 			/* SWITCH TO SELECT PIN */
 			switch ( Config_type -> PIN )
 			{
-				case Config_type -> PIN -> PIN0_ID :
-				CLR_BIT(PORTA,Config_type -> PIN -> PIN0_ID);
+				case  PIN0_ID :
+				CLEAR_BIT(PORTA, PIN0_ID);
 				break ;
-				case Config_type -> PIN -> PIN1_ID :
-				CLR_BIT(PORTA,Config_type -> PIN -> PIN1_ID);
+				case  PIN1_ID :
+				CLEAR_BIT(PORTA, PIN1_ID);
 				break ;
-				case Config_type -> PIN -> PIN2_ID :
-				CLR_BIT(PORTA,Config_type -> PIN -> PIN2_ID);
+				case  PIN2_ID :
+				CLEAR_BIT(PORTA, PIN2_ID);
 				break ;
-				case Config_type -> PIN -> PIN3_ID :
-				CLR_BIT(PORTA,Config_type -> PIN -> PIN3_ID);
+				case PIN3_ID :
+				CLEAR_BIT(PORTA, PIN3_ID);
 				break ;
-				case Config_type -> PIN -> PIN4_ID :
-				CLR_BIT(PORTA,Config_type -> PIN -> PIN4_ID);
+				case  PIN4_ID :
+				CLEAR_BIT(PORTA, PIN4_ID);
 				break ;
-				case Config_type -> PIN -> PIN5_ID :
-				CLR_BIT(PORTA,Config_type -> PIN -> PIN5_ID);
+				case  PIN5_ID :
+				CLEAR_BIT(PORTA, PIN5_ID);
 				break ;
-				case Config_type -> PIN -> PIN6_ID :
-				CLR_BIT(PORTA,Config_type -> PIN -> PIN6_ID);
+				case  PIN6_ID :
+				CLEAR_BIT(PORTA, PIN6_ID);
 				break ;
-				case Config_type -> PIN -> PIN7_ID :
-				CLR_BIT(PORTA,Config_type -> PIN -> PIN7_ID);
+				case  PIN7_ID :
+				CLEAR_BIT(PORTA, PIN7_ID);
 				break ;
+				case TOTALPINS_ID :
+				/*Do Nothing*/
+				break;
+				default :
+				/*Do Nothing*/
+				break;
 			}
 			STATUS = E_OK ;
 			break;
 			/* IF PORT B IS SLECTED */
-			case Config_type ->PORT->PORTB_ID :
+			case PORTB_ID :
 			
 			switch ( Config_type -> PIN )
 			{
-				case Config_type -> PIN -> PIN0_ID :
-				CLR_BIT(PORTB,Config_type -> PIN -> PIN0_ID);
+				case  PIN0_ID :
+				CLEAR_BIT(PORTB, PIN0_ID);
 				break ;
-				case Config_type -> PIN -> PIN1_ID :
-				CLR_BIT(PORTB,Config_type -> PIN -> PIN1_ID);
+				case  PIN1_ID :
+				CLEAR_BIT(PORTB, PIN1_ID);
 				break ;
-				case Config_type -> PIN -> PIN2_ID :
-				CLR_BIT(PORTB,Config_type -> PIN -> PIN2_ID);
+				case  PIN2_ID :
+				CLEAR_BIT(PORTB, PIN2_ID);
 				break ;
-				case Config_type -> PIN -> PIN3_ID :
-				CLR_BIT(PORTB,Config_type -> PIN -> PIN3_ID);
+				case  PIN3_ID :
+				CLEAR_BIT(PORTB, PIN3_ID);
 				break ;
-				case Config_type -> PIN -> PIN4_ID :
-				CLR_BIT(PORTB,Config_type -> PIN -> PIN4_ID);
+				case  PIN4_ID :
+				CLEAR_BIT(PORTB, PIN4_ID);
 				break ;
-				case Config_type -> PIN -> PIN5_ID :
-				CLR_BIT(PORTB,Config_type -> PIN -> PIN5_ID);
+				case  PIN5_ID :
+				CLEAR_BIT(PORTB, PIN5_ID);
 				break ;
-				case Config_type -> PIN -> PIN6_ID :
-				CLR_BIT(PORTB,Config_type -> PIN -> PIN6_ID);
+				case  PIN6_ID :
+				CLEAR_BIT(PORTB, PIN6_ID);
 				break ;
-				case Config_type -> PIN -> PIN7_ID :
-				CLR_BIT(PORTB,Config_type -> PIN -> PIN7_ID);
+				case  PIN7_ID :
+				CLEAR_BIT(PORTB, PIN7_ID);
 				break ;
+				
+				case TOTALPINS_ID :
+				/*Do Nothing*/
+				break;
+				
+				default :
+				/*Do Nothing*/
+				break;
 			}
 			STATUS = E_OK ;
 			break;
 			
 			/* IF PORT C IS SLECTED */
-			case Config_type ->PORT->PORTC_ID :
+			case PORTC_ID :
 			
 			switch ( Config_type -> PIN )
 			{
-				case Config_type -> PIN -> PIN0_ID :
-				CLR_BIT(PORTC,Config_type -> PIN -> PIN0_ID);
+				case  PIN0_ID :
+				CLEAR_BIT(PORTC, PIN0_ID);
 				break ;
-				case Config_type -> PIN -> PIN1_ID :
-				CLR_BIT(PORTC,Config_type -> PIN -> PIN1_ID);
+				case  PIN1_ID :
+				CLEAR_BIT(PORTC, PIN1_ID);
 				break ;
-				case Config_type -> PIN -> PIN2_ID :
-				CLR_BIT(PORTC,Config_type -> PIN -> PIN2_ID);
+				case  PIN2_ID :
+				CLEAR_BIT(PORTC, PIN2_ID);
 				break ;
-				case Config_type -> PIN -> PIN3_ID :
-				CLR_BIT(PORTC,Config_type -> PIN -> PIN3_ID);
+				case  PIN3_ID :
+				CLEAR_BIT(PORTC, PIN3_ID);
 				break ;
-				case Config_type -> PIN -> PIN4_ID :
-				CLR_BIT(PORTC,Config_type -> PIN -> PIN4_ID);
+				case PIN4_ID :
+				CLEAR_BIT(PORTC, PIN4_ID);
 				break ;
-				case Config_type -> PIN -> PIN5_ID :
-				CLR_BIT(PORTC,Config_type -> PIN -> PIN5_ID);
+				case  PIN5_ID :
+				CLEAR_BIT(PORTC, PIN5_ID);
 				break ;
-				case Config_type -> PIN -> PIN6_ID :
-				CLR_BIT(PORTC,Config_type -> PIN -> PIN6_ID);
+				case  PIN6_ID :
+				CLEAR_BIT(PORTC, PIN6_ID);
 				break ;
-				case Config_type -> PIN -> PIN7_ID :
-				CLR_BIT(PORTC,Config_type -> PIN -> PIN7_ID);
+				case  PIN7_ID :
+				CLEAR_BIT(PORTC, PIN7_ID);
 				break ;
+				
+				case TOTALPINS_ID :
+				/*Do Nothing*/
+				break;
+				
+				default :
+				/*Do Nothing*/
+				break;
 			}
 			STATUS = E_OK ;
 			break;
 			/* IF PORT D IS SLECTED */
-			case Config_type ->PORT->PORTD_ID :
+			case PORTD_ID :
 			
 			switch ( Config_type -> PIN )
 			{
-				case Config_type -> PIN -> PIN0_ID :
-				CLR_BIT(PORTD,Config_type -> PIN -> PIN0_ID);
+				case  PIN0_ID :
+				CLEAR_BIT(PORTD, PIN0_ID);
 				break ;
-				case Config_type -> PIN -> PIN1_ID :
-				CLR_BIT(PORTD,Config_type -> PIN -> PIN1_ID);
+				case  PIN1_ID :
+				CLEAR_BIT(PORTD, PIN1_ID);
 				break ;
-				case Config_type -> PIN -> PIN2_ID :
-				CLR_BIT(PORTD,Config_type -> PIN -> PIN2_ID);
+				case  PIN2_ID :
+				CLEAR_BIT(PORTD, PIN2_ID);
 				break ;
-				case Config_type -> PIN -> PIN3_ID :
-				CLR_BIT(PORTD,Config_type -> PIN -> PIN3_ID);
+				case  PIN3_ID :
+				CLEAR_BIT(PORTD, PIN3_ID);
 				break ;
-				case Config_type -> PIN -> PIN4_ID :
-				CLR_BIT(PORTD,Config_type -> PIN -> PIN4_ID);
+				case  PIN4_ID :
+				CLEAR_BIT(PORTD, PIN4_ID);
 				break ;
-				case Config_type -> PIN -> PIN5_ID :
-				CLR_BIT(PORTD,Config_type -> PIN -> PIN5_ID);
+				case  PIN5_ID :
+				CLEAR_BIT(PORTD, PIN5_ID);
 				break ;
-				case Config_type -> PIN -> PIN6_ID :
-				CLR_BIT(PORTD,Config_type -> PIN -> PIN6_ID);
+				case  PIN6_ID :
+				CLEAR_BIT(PORTD, PIN6_ID);
 				break ;
-				case Config_type -> PIN -> PIN7_ID :
-				CLR_BIT(PORTD,Config_type -> PIN -> PIN7_ID);
+				case  PIN7_ID :
+				CLEAR_BIT(PORTD, PIN7_ID);
 				break ;
+				
+				case TOTALPINS_ID :
+				/*Do Nothing*/
+				break;
+				
+				default :
+				/*Do Nothing*/
+				break;
 			}
 			STATUS = E_OK ;
 			break;
+			case TOTALPORTS_ID :
+			/*Do Nothing*/
+			break;
+			default:
+			/*Do Nothing*/
+			break;
 		}
 	}
+	return STATUS;
 }
+
 
