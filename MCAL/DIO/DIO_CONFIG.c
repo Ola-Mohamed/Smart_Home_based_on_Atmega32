@@ -1,8 +1,19 @@
+/******************************************************************************
+ *
+  Module: DIO
+ *
+ * File Name: DIO_CONFIG.c
+ *
+ * Author: Nti Team
+ *
+ * ******************************************************************************/
 
-#include "DIO_TYPES.h"
+#include "DIO_CONFIG.h"
 
 /****************************************************************************CONFIG PINS**********************************************************************************/
-const DIO_PIN_DIRECTION_TYPE pin_StatusArr[TOTALPORTS_ID][TOTALPINS_ID] = { /* const to stop editing on pins status outer this array */
+
+/* const to stop editing on pins status outer this array */
+const DIO_PIN_DIRECTION_TYPE pin_StatusArr[TOTALPORTS_ID][TOTALPINS_ID] = {
 	{
 		PIN_INPUT,   /* PORT A    PIN0 */
 		PIN_INPUT,   /* PORT A    PIN1 */

@@ -19,9 +19,10 @@ typedef unsigned char boolean;
 #define TRUE        (1u)
 #endif
 
-#define LOGIC_HIGH        (1u)
-#define LOGIC_LOW         (0u)
-
+/*
+#define LOGIC_HIGH        1
+#define LOGIC_LOW         0
+*/
 #define NULL_PTR    ((void*)0)
 
 typedef unsigned char         uint8;          /*           0 .. 255              */
