@@ -1,9 +1,12 @@
-/*
- * EXIT_PROG.c
+/******************************************************************************
  *
- *  Created on: 26 Oct 2023
- *      Author: 20128
- */
+ * Module: External Interrupt
+ *
+ * File Name: EXIT_PRIVATE.c
+ *
+ * Author: Nti Team
+ *
+ * ******************************************************************************/
 
 #ifndef EXIT_PROG_C_
 #define EXIT_PROG_C_

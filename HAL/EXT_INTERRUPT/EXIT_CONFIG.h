@@ -1,10 +1,12 @@
-/*
-  EXIT_CONFIG.h
+/******************************************************************************
  *
- *  Created on: 26 Oct 2023
- *      Author: 20128
- */
-
+ * Module: External Interrupt
+ *
+ * File Name: EXIT_CONFIG.c
+ *
+ * Author: Nti Team
+ *
+ * ******************************************************************************/
 
 /*****************************************************************************/
 /*  OPTIONS FOR EXTERNAL INTERRUPT INITIAL SENSE CONTROL:
