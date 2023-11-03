@@ -6,7 +6,7 @@
  *
  * Description: Source file for the External EEPROM Memory
  *
- * Author: Mohamed Tarek
+ * Author: fatma 
  *
  *******************************************************************************/
 #include "ex_eeprom_interface.h"
