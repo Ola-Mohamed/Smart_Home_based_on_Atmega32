@@ -1,0 +1,1 @@
+//Dio_ConfigType motion_confg = { motion_PIN , motion_PORT , 0 , 0 }  ;
