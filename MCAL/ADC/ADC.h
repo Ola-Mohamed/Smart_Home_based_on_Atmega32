@@ -5,6 +5,8 @@
  *      Author: ELAF
  */
 
+
+
 #ifndef ADC_H_
 #define ADC_H_
 #include "STD_TYPES.h"
