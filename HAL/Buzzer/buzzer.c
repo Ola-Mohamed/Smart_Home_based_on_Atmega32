@@ -1,32 +1,29 @@
-/*
- * buzzwr.c
+/******************************************************************************
  *
- *  Created on: Oct 27, 2022
- *      Author: hp
- */
-#include "DIO_INTERFACE.h"
+  Module: BUZZER
+ *
+ * File Name: buzzer.c
+ *
+ * Description: source file for buzzer module.
+ *
+ ******************************************************************************/
 #include "buzzer.h"
-/*
- * Setup the direction for the buzzer pin as output pin through the
-DIO driver.
 
-
- */
 void Buzzer_init(void)
 {
-	MCAL_DIO_INIT(&buzzer_config->port_id,&buzzer_config->pin_id,&buzzer_config->pin_direction);
+	MCAL_DIO_INIT();
 
 }
-/* Description: Set the BUZZER state to ON */
-void BUZZER_setOn(void);
+/***********************************************************************************************/
+
+void BUZZER_setOn(Dio_ConfigType  *BUZZER)
 {
-	MCAL_DIO_Std_WRITE_PIN_DIRECTION(BUZZER_PORT,BUZZER_PIN,BUZZER_ON); //turn on buzzer
+	MCAL_DIO_Std_WRITE_PIN(&BUZZER, LOGIC_HIGH);    /* LED ON */
 }
 
-
-/* Description: Set the BUZZER state to OFF */
-void BUZZER_setOff(void);
+/*********************************************************************************************/
+void BUZZER_setOff(Dio_ConfigType  *BUZZER)
 {
-	MCAL_DIO_Std_WRITE_PIN_DIRECTION(BUZZER_PORT,BUZZER_PIN,BUZZER_OFF);  //turn off buzzer
-
+	MCAL_DIO_Std_WRITE_PIN(&BUZZER, LOGIC_LOW);  /* LED OFF */
 }
+
