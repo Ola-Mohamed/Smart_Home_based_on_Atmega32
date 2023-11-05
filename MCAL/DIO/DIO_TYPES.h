@@ -12,28 +12,30 @@
 #define DIO_TYPES_H_
 
 #include "STD_TYPES.h"
+
 #define DIO_PORTS    4
 #define DIO_PINS     8
 typedef unsigned char u8PortValue;
 typedef unsigned char u8PINValue;
+
 // Type definition for a standard error code.
 typedef enum {
   E_OK, // The operation was successful.
-  E_NOT_OK, // The operation failed.
+  E_NOT_OK // The operation failed.
 } STD_TYPE_DIO;
 
 
 // Type definition for a DIO logic level.
 typedef enum {
   LOGIC_LOW, // The signal is at a low voltage level.
-  LOGIC_HIGH, // The signal is at a high voltage level.
+  LOGIC_HIGH // The signal is at a high voltage level.
 } DIO_LEVEL_TYPE;
 
 // Type definition for a DIO pin direction.
 typedef enum {
   PIN_INPUT, // Pin is configured as an input.
   PIN_OUTPUT, // Pin is configured as an output.
-  PIN_INFREE,// pin is configured as pulldown
+  PIN_INFREE// pin is configured as pulldown
 } DIO_PIN_DIRECTION_TYPE;
 
 // Type definition for a DIO port direction.
