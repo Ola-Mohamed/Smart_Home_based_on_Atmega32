@@ -23,11 +23,11 @@ void MCAL_DIO_INIT();
 
 
 // Function to read the direction of a DIO port.
-DIO_LEVEL_TYPE MCAL_DIO_READ_PORT_DIRECTION( DIO_PORT_ID PortId); // Pointer to the ID of the DIO port.
+STD_TYPE_DIO MCAL_DIO_READ_PORT_DIRECTION(Dio_ConfigType* READ_PORT,u8PortValue*value);
 
 
 // Function to read the direction of a DIO pin.
-DIO_LEVEL_TYPE MCAL_DIO_READ_PIN_DIRECTION(DIO_PORT_ID PortId,DIO_PIN_ID PinId);
+STD_TYPE_DIO MCAL_DIO_READ_PIN_DIRECTION(Dio_ConfigType* READ_PIN,u8PINValue*PIN_value);
    // Pointer to the ID of the DIO pin.
 
 // Function to flip the direction of a DIO port.
