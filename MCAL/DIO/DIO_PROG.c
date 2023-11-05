@@ -699,6 +699,8 @@ STD_TYPE_DIO MCAL_DIO_READ_PIN_DIRECTION(Dio_ConfigType* READ_PIN,u8PINValue*PIN
 			return ERROR;
 }
 
+
+
 /************************************************************************************
 * Service Name:  MCAL_DIO_Std_FLIP_PORT_DIRECTION
 * Parameters (in): DIO_PORT_ID - port id
@@ -707,31 +709,38 @@ STD_TYPE_DIO MCAL_DIO_READ_PIN_DIRECTION(Dio_ConfigType* READ_PIN,u8PINValue*PIN
 * Return value: STD_TYPE_DIO
 * Description: Function to toggle port
 ************************************************************************************/
+STD_TYPE_DIO MCAL_DIO_Std_FLIP_PORT_DIRECTION(Dio_ConfigType * Config_type){
 
-STD_TYPE_DIO MCAL_DIO_Std_FLIP_PORT_DIRECTION(DIO_PORT_ID PortId){
-
-	STD_TYPE_DIO LOC_error= E_OK;
-		if (PortId <= 3)
-			{
-				switch (PortId)
-				{
-				case PORTA_ID :  PORTA = ~PORTA;
-				break ;
-				case PORTB_ID : PORTB = ~PORTB;
-				break ;
-				case PORTC_ID : PORTB = ~PORTB;
-				break ;
-				case PORTD_ID : PORTB = ~PORTB;
-				break ;
-				}
-
-			}
-		else
-			{
-				/* in case of error in the Pin ID or PORT ID */
-			LOC_error = E_NOT_OK ;
-			}
-       return LOC_error;
+	/* enum to check if data assigned on port or not */
+		STD_TYPE_DIO LOC_status = E_NOT_OK  ;
+		/* switch to select port */
+		switch (Config_type ->PORT)
+		{
+			/* ports types */
+			case PORTA_ID :
+			PORTA = ~PORTA;
+			LOC_status = E_OK ;
+			break ;
+			case PORTB_ID :
+			PORTB = ~PORTB;
+			LOC_status = E_OK ;
+			break ;
+			case PORTC_ID :
+			PORTC = ~PORTC;
+			LOC_status = E_OK ;
+			break ;
+			case PORTD_ID :
+			PORTD = ~PORTD;
+			LOC_status = E_OK ;
+			break ;
+			case TOTALPORTS_ID :
+			/*Do Nothing*/
+			break;
+			default:
+			/*Do Nothing*/
+			break;
+		}
+		return LOC_status ;
 }
 
 /************************************************************************************
@@ -743,36 +752,184 @@ STD_TYPE_DIO MCAL_DIO_Std_FLIP_PORT_DIRECTION(DIO_PORT_ID PortId){
 * Return value: STD_TYPE_DIO
 * Description: Function to toggle specific pin
 ************************************************************************************/
-STD_TYPE_DIO MCAL_DIO_Std_FLIP_PIN_DIRECTION(DIO_PORT_ID PortId, DIO_PIN_ID PIN){
+STD_TYPE_DIO MCAL_DIO_Std_FLIP_PIN_DIRECTION(Dio_ConfigType * Config_type){
 
-	STD_TYPE_DIO ERROR= E_OK;
-	if (PIN <= 7)
-		{
-			switch (PortId)
+	STD_TYPE_DIO LOC_status = E_NOT_OK  ;
+		/* SWITCH TO SELECT PORT */
+			switch (Config_type ->PORT)
 			{
-			case PORTA_ID : FLIP_BIT(PORTA,PIN);
-			break ;
-			case PORTB_ID : FLIP_BIT(PORTB,PIN);
-			break ;
-			case PORTC_ID : FLIP_BIT(PORTC,PIN);
-			break ;
-			case PORTD_ID : FLIP_BIT(PORTD,PIN);
-			break ;
+				/* IF PORT A IS SLECTED */
+				case PORTA_ID :
+				/* SWITCH TO SELECT PIN */
+				switch (Config_type -> PIN )
+				{
+					case  PIN0_ID :
+					   TOGGLE_BIT(PORTA, PIN0_ID);
+					break ;
+					case  PIN1_ID :
+						TOGGLE_BIT(PORTA, PIN1_ID);
+					break ;
+					case PIN2_ID :
+						TOGGLE_BIT(PORTA, PIN2_ID);
+					break ;
+					case  PIN3_ID :
+						TOGGLE_BIT(PORTA, PIN3_ID);
+					break ;
+					case  PIN4_ID :
+						TOGGLE_BIT(PORTA, PIN4_ID);
+					break ;
+					case PIN5_ID :
+						TOGGLE_BIT(PORTA, PIN5_ID);
+					break ;
+					case PIN6_ID :
+						TOGGLE_BIT(PORTA, PIN6_ID);
+					break ;
+					case  PIN7_ID :
+						TOGGLE_BIT(PORTA, PIN7_ID);
+					break ;
+
+					case TOTALPINS_ID :
+					/*Do Nothing*/
+					break;
+
+					default :
+					/*Do Nothing*/
+					break;
+				}
+				LOC_status = E_OK ;
+				break;
+				/* IF PORT B IS SLECTED */
+				case PORTB_ID :
+
+				switch ( Config_type -> PIN )
+				{
+					case  PIN0_ID :
+						TOGGLE_BIT(PORTB, PIN0_ID);
+					break ;
+					case  PIN1_ID :
+						TOGGLE_BIT(PORTB, PIN1_ID);
+					break ;
+					case PIN2_ID :
+						TOGGLE_BIT(PORTB, PIN2_ID);
+					break ;
+					case  PIN3_ID :
+						TOGGLE_BIT(PORTB, PIN3_ID);
+					break ;
+					case  PIN4_ID :
+						TOGGLE_BIT(PORTB, PIN4_ID);
+					break ;
+					case  PIN5_ID :
+						TOGGLE_BIT(PORTB, PIN5_ID);
+					break ;
+					case  PIN6_ID :
+						TOGGLE_BIT(PORTB, PIN6_ID);
+					break ;
+					case  PIN7_ID :
+						TOGGLE_BIT(PORTB, PIN7_ID);
+					break ;
+
+					case TOTALPINS_ID :
+					/*Do Nothing*/
+					break;
+
+					default :
+					/*Do Nothing*/
+					break;
+				}
+				LOC_status = E_OK ;
+				break;
+
+				/* IF PORT C IS SLECTED */
+				case PORTC_ID :
+
+				switch ( Config_type -> PIN )
+				{
+					case  PIN0_ID :
+						TOGGLE_BIT(PORTC, PIN0_ID);
+					break ;
+					case  PIN1_ID :
+						TOGGLE_BIT(PORTC, PIN1_ID);
+					break ;
+					case  PIN2_ID :
+						TOGGLE_BIT(PORTC, PIN2_ID);
+					break ;
+					case  PIN3_ID :
+						TOGGLE_BIT(PORTC, PIN3_ID);
+					break ;
+					case  PIN4_ID :
+						TOGGLE_BIT(PORTC, PIN4_ID);
+					break ;
+					case PIN5_ID :
+						TOGGLE_BIT(PORTC, PIN5_ID);
+					break ;
+					case  PIN6_ID :
+						TOGGLE_BIT(PORTC, PIN6_ID);
+					break ;
+					case  PIN7_ID :
+						TOGGLE_BIT(PORTC, PIN7_ID);
+					break ;
+
+					case TOTALPINS_ID :
+					/*Do Nothing*/
+					break;
+
+					default :
+					/*Do Nothing*/
+					break;
+				}
+				LOC_status = E_OK ;
+				break;
+				/* IF PORT D IS SLECTED */
+				case PORTD_ID :
+
+				switch ( Config_type -> PIN )
+				{
+					case  PIN0_ID :
+						TOGGLE_BIT(PORTD, PIN0_ID);
+					break ;
+					case  PIN1_ID :
+						TOGGLE_BIT(PORTD, PIN1_ID);
+					break ;
+					case  PIN2_ID :
+						TOGGLE_BIT(PORTD, PIN2_ID);
+					break ;
+					case  PIN3_ID :
+						TOGGLE_BIT(PORTD, PIN3_ID);
+					break ;
+					case PIN4_ID :
+						TOGGLE_BIT(PORTD, PIN4_ID);
+					break ;
+					case PIN5_ID :
+						TOGGLE_BIT(PORTD, PIN5_ID);
+					break ;
+					case  PIN6_ID :
+						TOGGLE_BIT(PORTD, PIN6_ID);
+					break ;
+					case  PIN7_ID :
+						TOGGLE_BIT(PORTD, PIN7_ID);
+					break ;
+
+					case TOTALPINS_ID :
+					/*Do Nothing*/
+					break;
+					default :
+					/*Do Nothing*/
+					break;
+				}
+				LOC_status = E_OK ;
+				break;
+
+				case TOTALPORTS_ID :
+				/*Do Nothing*/
+				break;
+
+				default :
+				/*Do Nothing*/
+				break;
 			}
 
-		}
-	else
-		{
-			/* in case of error in the Pin ID or PORT ID */
-			ERROR = E_NOT_OK ;
-		}
-
-
-
-	return ERROR;
-
+		return LOC_status;
 }
-
 /************************************************************************************
 * Service Name:  MCAL_DIO_Std_WRITE_PORT
 * Parameters (in): Dio_ConfigType - Pointer to post-build configuration data
@@ -837,7 +994,7 @@ STD_TYPE_DIO MCAL_DIO_Std_WRITE_PIN (Dio_ConfigType * Config_type  , DIO_LEVEL_T
 			/* IF PORT A IS SLECTED */
 			case PORTA_ID :
 			/* SWITCH TO SELECT PIN */
-			switch ( Config_type -> PIN )
+			switch (Config_type -> PIN )
 			{
 				case  PIN0_ID :
 				SET_BIT(PORTA, PIN0_ID);

@@ -21,7 +21,7 @@ const DIO_PIN_DIRECTION_TYPE pin_StatusArr[TOTALPORTS_ID][TOTALPINS_ID] = {
 		PIN_INPUT,   /* PORT A    PIN3 */
 		PIN_INPUT,   /* PORT A    PIN4 */
 		PIN_INPUT,   /* PORT A    PIN5 */
-		PIN_INPUT,   /* PORT A    PIN6 */
+		PIN_OUTPUT,   /* PORT A    PIN6 */
 		PIN_INPUT    /* PORT A    PIN7 */
 	},
 	{
@@ -41,7 +41,7 @@ const DIO_PIN_DIRECTION_TYPE pin_StatusArr[TOTALPORTS_ID][TOTALPINS_ID] = {
 		PIN_INPUT,   /* PORT C    PIN3 */
 		PIN_INPUT,   /* PORT C    PIN4 */
 		PIN_INPUT,   /* PORT C    PIN5 */
-		PIN_INPUT,   /* PORT C    PIN6 */
+		PIN_OUTPUT,   /* PORT C    PIN6 */
 		PIN_INPUT    /* PORT C    PIN7 */
 	},
 	{
