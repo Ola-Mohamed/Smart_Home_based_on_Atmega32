@@ -592,32 +592,39 @@ static void MCAL_DIO_INIT_PINS(Dio_ConfigType * configType , DIO_PIN_DIRECTION_T
 * Return value: DIO_LEVEL_TYPE
 * Description: Function to Read and return the value of the required port.
 ************************************************************************************/
-DIO_LEVEL_TYPE MCAL_DIO_READ_PORT_DIRECTION(DIO_PORT_ID PortId){
+STD_TYPE_DIO MCAL_DIO_READ_PORT_DIRECTION(Dio_ConfigType* READ_PORT,u8PortValue*value){
 
-	DIO_PORT_ID LOC_port_num = PortId/8;   //result of divi is number of port
-	DIO_LEVEL_TYPE LOC_value = LOGIC_LOW;
-
-
-
-	/* Read the port value as required */
-	switch(LOC_port_num)
+	STD_TYPE_DIO error=E_OK ;  //result of divi is number of port
+	if(READ_PORT->PORT >= DIO_PORTS)
 	{
-	case PORTA_ID:
-		LOC_value = PINA;
-		break;
-	case PORTB_ID:
-		LOC_value = PINB;
-		break;
-	case PORTC_ID:
-		LOC_value = PINC;
-		break;
-	case PORTD_ID:
-		LOC_value = PIND;
-		break;
+
+		error = E_NOT_OK;
 	}
+	else
+	{
+		switch (READ_PORT->PORT )
+		{
 
 
-	return LOC_value;
+
+		/*Read the port value as required */
+
+		case PORTA_ID:
+			*value = PINA;
+			break;
+		case PORTB_ID:
+			*value = PINB;
+			break;
+		case PORTC_ID:
+			*value = PINC;
+			break;
+		case PORTD_ID:
+			*value = PIND;
+			break;
+		}
+
+	}
+	return error;
 }
 
 
@@ -632,58 +639,64 @@ DIO_LEVEL_TYPE MCAL_DIO_READ_PORT_DIRECTION(DIO_PORT_ID PortId){
 * be Logic High or Logic Low.
 ************************************************************************************/
 
-DIO_LEVEL_TYPE MCAL_DIO_READ_PIN_DIRECTION(DIO_PORT_ID PortId,DIO_PIN_ID PinId){
-
-	DIO_PORT_ID LOC_port_num  =  PortId/8;  //result of div is number of port
-	DIO_PIN_ID LOC_pin_num = PinId %8;     //result of modulo is number of pin
-	DIO_LEVEL_TYPE LOC_pin_value = LOGIC_LOW;
-
-	switch(LOC_port_num)
+STD_TYPE_DIO MCAL_DIO_READ_PIN_DIRECTION(Dio_ConfigType* READ_PIN,u8PINValue*PIN_value)
 	{
-	case PORTA_ID:
-		if(BIT_IS_SET(PINA,LOC_pin_num))
+		STD_TYPE_DIO ERROR = E_OK;
+		if(READ_PIN->PIN >= DIO_PINS)
 		{
-			LOC_pin_value = LOGIC_HIGH;
-		}
-		else
-		{
-			LOC_pin_value = LOGIC_LOW;
-		}
-		break;
-	case PORTB_ID:
-		if(BIT_IS_SET(PINB,LOC_pin_num))
-		{
-			LOC_pin_value = LOGIC_HIGH;
-		}
-		else
-		{
-			LOC_pin_value = LOGIC_LOW;
-		}
-		break;
-	case PORTC_ID:
-		if(BIT_IS_SET(PINC,LOC_pin_num))
-		{
-			LOC_pin_value = LOGIC_HIGH;
-		}
-		else
-		{
-			LOC_pin_value = LOGIC_LOW;
-		}
-		break;
-	case PORTD_ID:
-		if(BIT_IS_SET(PIND,LOC_pin_num))
-		{
-			LOC_pin_value = LOGIC_HIGH;
-		}
-		else
-		{
-			LOC_pin_value = LOGIC_LOW;
-		}
-		break;
 
-	}
+			ERROR = E_NOT_OK;
 
-	return LOC_pin_value;
+		}
+		else
+		{
+
+			switch(READ_PIN->PIN >= DIO_PINS)
+			{
+			case PORTA_ID:
+				if(BIT_IS_SET(PINA,READ_PIN->PIN))
+				{
+					*PIN_value = LOGIC_HIGH;
+				}
+				else
+				{
+					*PIN_value = LOGIC_LOW;
+				}
+				break;
+			case PORTB_ID:
+				if(BIT_IS_SET(PINB,READ_PIN->PIN))
+				{
+					*PIN_value = LOGIC_HIGH;
+				}
+				else
+				{
+					*PIN_value = LOGIC_LOW;
+				}
+				break;
+			case PORTC_ID:
+				if(BIT_IS_SET(PINC,READ_PIN->PIN))
+				{
+					*PIN_value = LOGIC_HIGH;
+				}
+				else
+				{
+					*PIN_value = LOGIC_LOW;
+				}
+				break;
+			case PORTD_ID:
+				if(BIT_IS_SET(PIND,READ_PIN->PIN))
+				{
+					*PIN_value = LOGIC_HIGH;
+				}
+				else
+				{
+					*PIN_value = LOGIC_LOW;
+				}
+				break;
+
+			}
+		}
+			return ERROR;
 }
 
 /************************************************************************************
