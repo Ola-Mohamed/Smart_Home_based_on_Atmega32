@@ -1,6 +1,6 @@
 /******************************************************************************
  *
- * Module: Led
+  Module: Led
  *
  * File Name: Led.h
  *
@@ -11,38 +11,20 @@
 #define LED_H
 
 
-#include "STD_TYPES.h"
-#include "../DIO/DIO_INTERFACE.h"
+#include "LED_Cfg.h"
 
-/* Set the led ON/OFF according to its configuration Positive logic or negative logic */
-#define LED_ON    LOGIC_HIGH
-#define LED_OFF    LOGIC_LOW
-#define LED_PORT     DIO_PORT_ID
-#define LED_PIN      DIO_PIN_ID
-
-
-
-// Type definition for a LED configuration.
-typedef struct {
-  DIO_PIN_ID pin_id;
-  DIO_PORT_ID port_id;
-  DIO_PIN_DIRECTION_TYPE pin_direction;
-
-} LED_config_t;
 
 /* Description: 1. Fill the led configurations structure
  *              2. Set the PIN direction which the led is connected as OUTPUT pin
  *		        3. Initialize the led ON/OFF according to the initial value
  */
-void HAL_LED_init(LED_config_t *Led_config);
-
+void LED_init();
 /* Description: Set the LED state to ON */
-void HAL_LED_setOn(void);
-
+void LED_setOn(Dio_ConfigType   *LED);
 /* Description: Set the LED state to OFF */
-void HAL_LED_setOff(void);
+void LED_setOff(Dio_ConfigType  *LED);
 
 /*Description: Toggle the LED state */
-void HAL_LED_toggle(void);
+void LED_toggle(Dio_ConfigType  *LED);
 
 #endif /* LED_H */

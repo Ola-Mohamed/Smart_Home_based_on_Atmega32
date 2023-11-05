@@ -9,58 +9,27 @@
 
 #include "Led.h"
 
-/************************************************************************************
-* Service Name: HAL_LED_init
-* Parameters (in): LED_config_t
-* Parameters (inout): None
-* Parameters (out): None
-* Return value: None
-* Description: Function to Initialize the LED module.
-************************************************************************************/
+void LED_init(){
 
-
-void HAL_LED_init(LED_config_t Led_config){
-
-	MCAL_DIO_INIT(&Led_config->port_id,&Led_config->pin_id,&Led_config->pin_direction);
+	MCAL_DIO_INIT();
 
 }
-/************************************************************************************
-* Service Name: HAL_LED_setOn
-* Parameters (in): None
-* Parameters (inout): None
-* Parameters (out): None
-* Return value: None
-* Description: Function to SET the LED module ON.
-************************************************************************************/
-void HAL_LED_setOn(void)
+
+void LED_setOn(Dio_ConfigType  *LED)
 {
-	 MCAL_DIO_Std_WRITE_PIN_DIRECTION(LED_PORT,LED_PIN,LED_ON);  /* LED ON */
+	MCAL_DIO_Std_WRITE_PIN(&LED, LOGIC_HIGH);    /* LED ON */
 }
 
-/************************************************************************************
-* Service Name: HAL_LED_setOff
-* Parameters (in):None
-* Parameters (inout): None
-* Parameters (out): None
-* Return value: None
-* Description: Function to SET the LED module Off.
-************************************************************************************/
-void HAL_LED_setOff(void)
+/*********************************************************************************************/
+void LED_setOff(Dio_ConfigType  *LED)
 {
-	MCAL_DIO_Std_WRITE_PIN_DIRECTION(LED_PORT,LED_PIN,LED_OFF); /* LED OFF */
+	MCAL_DIO_Std_WRITE_PIN(&LED, LOGIC_LOW);  /* LED OFF */
 }
 
-/************************************************************************************
-* Service Name: HAL_LED_toggle
-* Parameters (in): None
-* Parameters (inout): None
-* Parameters (out): None
-* Return value: None
-* Description: Function to Toggle LED.
-************************************************************************************/
-void HAL_LED_toggle(void)
+/*********************************************************************************************/
+void LED_toggle(Dio_ConfigType  *LED)
 {
-     MCAL_DIO_Std_FLIP_PIN_DIRECTION(LED_PORT,LED_PIN);
+	MCAL_DIO_Std_FLIP_PIN_DIRECTION(&LED);
 }
 
 /*********************************************************************************************/
