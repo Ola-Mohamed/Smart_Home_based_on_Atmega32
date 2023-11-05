@@ -12,7 +12,10 @@
 #define DIO_TYPES_H_
 
 #include "STD_TYPES.h"
-
+#define DIO_PORTS    4
+#define DIO_PINS     8
+typedef unsigned char u8PortValue;
+typedef unsigned char u8PINValue;
 // Type definition for a standard error code.
 typedef enum {
   E_OK, // The operation was successful.
