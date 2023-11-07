@@ -13,16 +13,11 @@
 
 #include"buzzer_config.h"
 
-/* Description: 1. Fill the BUZZER configurations structure
- *              2. Set the PIN direction which the BUZZER is connected as OUTPUT pin
- *		        3. Initialize the BUZZER ON/OFF according to the initial value
- */
 
-void Buzzer_init();
 /* Description: Set the BUZZER state to ON */
-void BUZZER_setOn(Dio_ConfigType  *BUZZER);
+void BUZZER_setOn();
 
 /* Description: Set the BUZZER state to OFF */
-void BUZZER_setOff(Dio_ConfigType  *BUZZER);
+void BUZZER_setOff();
 
 #endif /* BUZZER_H_ */
