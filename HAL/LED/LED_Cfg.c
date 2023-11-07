@@ -18,6 +18,10 @@ Dio_ConfigType LED_RED  =  {PIN7_ID , PORTB_ID ,0 ,0};
 
 Dio_ConfigType LED_GREEN  = {PIN4_ID , PORTA_ID ,0 ,0};
 
-Dio_ConfigType LED_YELLOW = {PIN5_ID , PORTA_ID ,0 ,0};
+Dio_ConfigType LED_YELLOW = {PIN6_ID , PORTA_ID ,0 ,LOGIC_LOW};
 
-Dio_ConfigType LED_BLUE  = {PIN6_ID , PORTA_ID ,0 ,0};
+Dio_ConfigType LED_BLUE  = {PIN5_ID , PORTA_ID ,0,LOGIC_LOW};
+
+
+
+
