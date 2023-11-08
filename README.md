@@ -15,21 +15,21 @@ The ATmega32 is a highly versatile and widely used 8-bit microcontroller from Mi
 
 Key Features:
 
-High-performance, low-power 8-bit AVR-based microcontroller
-32KB ISP flash memory with read-while-write capabilities
-1KB EEPROM
-2KB SRAM
-54/69 general-purpose I/O lines
-32 general-purpose working registers
-JTAG interface for boundary-scan and on-chip debugging and programming
-Three flexible timers and counters with compare modes
-Internal and external interrupts
-Serial programmable USART
-Universal serial interface (USI) with start condition detector
-8-channel 10-bit A/D converter
-Programmable watchdog timer with internal oscillator
-SPI serial port
-Five software selectable power saving modes
+- High-performance, low-power 8-bit AVR-based microcontroller
+- 32KB ISP flash memory with read-while-write capabilities
+- 1KB EEPROM
+- 2KB SRAM
+- 54/69 general-purpose I/O lines
+- 32 general-purpose working registers
+- JTAG interface for boundary-scan and on-chip debugging and programming
+- Three flexible timers and counters with compare modes
+- Internal and external interrupts
+- Serial programmable USART
+- Universal serial interface (USI) with start condition detector
+- 8-channel 10-bit A/D converter
+- Programmable watchdog timer with internal oscillator
+- SPI serial port
+- Five software selectable power saving modes
 
 The ATmega32 is a popular choice for a variety of embedded applications in education part due to its combination of features, performance, and cost-effectiveness. It is a versatile microcontroller that can be used in a wide range of applications, from simple consumer devices to complex industrial systems.
 
