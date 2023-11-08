@@ -1,8 +1,7 @@
-# Smart Home Toechnology
 # Smart Home Based on ATmega32 MicroController
 
 A smart home uses connected devices controlled by a smartphone or voice commands to automate tasks, enhance security, save energy, and provide convenience.
-Here's a simple overview of key components and benefits of a smart home:
+Here's a simple overview of the key components and benefits of a smart home:
 Connected Devices
 Smartphone Control
 Automation
