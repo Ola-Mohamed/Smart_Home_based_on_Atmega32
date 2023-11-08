@@ -11,6 +11,7 @@
 
 
 #include "DIO_TYPES.h"
+#include "Blinds_Config.h"
 
 
 STD_TYPE Blinds_Open();

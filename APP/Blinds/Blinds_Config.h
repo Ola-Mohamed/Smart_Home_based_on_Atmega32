@@ -9,9 +9,10 @@
 #ifndef BLINDS_CONFIG_H_
 #define BLINDS_CONFIG_H_
 
+#define BLINDS_MOTOR_TIME    2000
 
-#define ManualMode   1
-#define MokaMode     2	
+#define ManualMode           1
+#define MokaMode             2	
 
 
 

@@ -11,6 +11,7 @@
 
 
 #include "DIO_TYPES.h"
+#include "Garage_Config.h"
 
 STD_TYPE Garage_Open();
 STD_TYPE Garage_Close();
