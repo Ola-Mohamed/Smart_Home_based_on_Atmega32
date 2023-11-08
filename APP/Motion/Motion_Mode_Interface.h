@@ -14,7 +14,6 @@
 
 STD_TYPE MotionMode_Start();
 STD_TYPE MotionMode_Stop();
-STD_TYPE MotionMode_Detect();
 
 
 
