@@ -25,7 +25,7 @@ Security
 
 ## Requirments 
 Our team has dedicated significant effort to gather and transform the previous features into customer requirements, as outlined in the [Customer Requirements Document] (https://github.com/Ola-Mohamed/Smart_Home_based_on_Atmega32/blob/main/Documentation/App/Customer%20Requirments.pdf), and this is a small example:
-![Requirments.png](hhttps://github.com/Ola-Mohamed/Smart_Home_based_on_Atmega32/blob/main/Media/screen1.PNG)
+![Requirments.png](https://github.com/Ola-Mohamed/Smart_Home_based_on_Atmega32/blob/main/Media/screen1.PNG)
 
 ## Smart Home System
 We divide the smart home into two sub-systems, and within the second sub-system, we also have two sub-systems.
